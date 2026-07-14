@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Trace the Chicago Taste</title>
+<meta name="description" content="Longer takes on Chicago food from @tracethechicagotaste.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<style>
+  :root {
+    --white: #ffffff;
+    --paper: #fdfaf2;
+    --ink: #0d2d5f;
+    --ink-soft: #4a5d80;
+    --red: #e5002b;
+    --sky: #42b5e8;
+    --line: #e3e7ee;
+    --max: 780px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Barlow', system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--white);
+  }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+  .stripes span { display: block; height: 6px; background: var(--sky); }
+  .stripes span + span { margin-top: 6px; }
+
+  header.nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255,255,255,.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .brand img { border-radius: 50%; flex-shrink: 0; }
+  nav.links { display: flex; gap: 24px; }
+  nav.links a {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15.5px;
+    color: var(--ink-soft);
+    padding: 4px 0;
+    border-bottom: 2px solid transparent;
+  }
+  nav.links a:hover { color: var(--ink); border-bottom-color: var(--red); }
+
+  main { padding: 56px 0 72px; }
+  .page-head { margin-bottom: 36px; }
+  .page-head .kicker {
+    font-weight: 600;
+    font-size: 13.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--sky);
+  }
+  h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(34px, 6vw, 52px);
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin-top: 6px;
+  }
+  .page-head p { margin-top: 10px; color: var(--ink-soft); }
+
+  .wip-notice {
+    margin-bottom: 32px;
+    padding: 14px 18px;
+    border: 1.5px solid var(--sky);
+    background: rgba(66, 181, 232, .08);
+    border-radius: 10px;
+    font-size: 14.5px;
+  }
+  .wip-notice strong { color: var(--red); }
+
+  .post-list { display: flex; flex-direction: column; }
+  .post {
+    display: grid;
+    grid-template-columns: 110px 1fr auto;
+    gap: 24px;
+    align-items: baseline;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+  }
+  .post:first-child { border-top: 1px solid var(--line); }
+  .post .date { font-size: 14px; color: var(--ink-soft); }
+  .post h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 26px;
+    text-transform: uppercase;
+    line-height: 1.15;
+  }
+  .post:hover h2 { color: var(--red); }
+  .post .arrow { font-size: 20px; color: var(--sky); }
+  .post p { grid-column: 2; font-size: 15.5px; color: var(--ink-soft); margin-top: 2px; }
+  @media (max-width: 640px) {
+    .post {
+      grid-template-columns: 1fr auto;
+      grid-template-areas: "date arrow" "title title" "desc desc";
+      row-gap: 6px;
+    }
+    .post .date { grid-area: date; }
+    .post .arrow { grid-area: arrow; }
+    .post h2 { grid-area: title; }
+    .post p { grid-area: desc; margin-top: 0; }
+  }
+
+  footer { padding: 40px 0 48px; }
+  .foot-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    color: var(--ink-soft);
+    font-size: 14.5px;
+  }
+  .foot-inner a { color: var(--ink); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<div class="stripes" aria-hidden="true"><span></span><span></span></div>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <img src="logo.svg" alt="" width="40" height="40">
+      Trace the Chicago Taste
+    </a>
+    <nav class="links" aria-label="Site">
+      <a href="/eat">Where to Eat</a>
+      <a href="/blog">Blog</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="page-head">
+      <span class="kicker">The Blog</span>
+      <h1>Longer takes</h1>
+      <p>Some meals need more than 60 seconds.</p>
+    </div>
+
+    <div class="wip-notice"><strong>Work in progress.</strong> Every post below is a placeholder. None of it is real yet.</div>
+
+    <div class="post-list">
+      <a class="post" href="#">
+        <span class="date">Jul 2026</span>
+        <h2>A definitive ranking of Chicago's tavern-style pizza</h2>
+        <span class="arrow">&rarr;</span>
+        <p>Square cut. Cracker thin. Non-negotiable. Ten spots, one winner.</p>
+      </a>
+      <a class="post" href="#">
+        <span class="date">Jun 2026</span>
+        <h2>What I learned eating at 30 restaurants in 30 days</h2>
+        <span class="arrow">&rarr;</span>
+        <p>The series that started the account: what held up, what didn't, and what it cost me.</p>
+      </a>
+      <a class="post" href="#">
+        <span class="date">Jun 2026</span>
+        <h2>The out-of-towner's guide: one perfect food day in Chicago</h2>
+        <span class="arrow">&rarr;</span>
+        <p>Breakfast to late night, zero tourist traps. Send this to whoever's visiting you.</p>
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="stripes" aria-hidden="true"><span></span><span></span></div>
+  <div class="wrap foot-inner" style="margin-top:32px">
+    <span>&copy; 2026 Trace the Chicago Taste. Made in Chicago.</span>
+    <span><a href="https://www.instagram.com/tracethechicagotaste" target="_blank" rel="noopener">Instagram</a> &middot; <a href="https://www.tiktok.com/@tracethechicagotaste" target="_blank" rel="noopener">TikTok</a> &middot; <a href="mailto:trace@tracethechicagotaste.com">Email</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -6,10 +6,11 @@ Personal brand site for @tracethechicagotaste, a Chicago food TikTok account. Ow
 
 Static site, no build step, no framework. Plain HTML/CSS/JS, one file per page.
 
-- `index.html` — currently the full-featured v1 (hero, video grid, recommendation engine, blog, contact)
+- `index.html` — the minimal landing page (v2, live). Logo, handle, tagline, links to Instagram/TikTok/`/eat`/`/blog`/Contact. Contact opens a native `<dialog>`.
+- `eat.html` — "Where to Eat" placeholder ("coming soon"). The full recommendation-engine build (hero, video grid, `SPOTS` array, filter chips, blog section, work-with-me contact) is intentionally on hold while Trace thinks through the design more; the old full-site version is preserved in git history (see commits before the `eat.html` rewrite) rather than deleted.
+- `blog.html` — the blog. Longer-form post list (currently placeholder titles), pulled out of the old `eat.html` when it became a placeholder.
 - `logo.svg` — brand badge (circular illustration; character with Chicago foods). Referenced by pages, do not inline it.
 - `favicon-32.png`, `apple-touch-icon.png`, `icon-512.png` — generated from logo.svg
-- Restaurant data lives in a `SPOTS` JavaScript array at the bottom of the page that uses it. Filter chips auto-generate from the data. To add a restaurant, edit only that array.
 
 ## Deployment — IMPORTANT
 
@@ -38,21 +39,18 @@ Business email: trace@tracethechicagotaste.com (Porkbun hosted; Gmail send-as se
 
 Plain verbs, no marketing-speak. Banned: delve, seamless, robust, unlock, unleash, empower, elevate, leverage, game-changer, journey, landscape, holistic, cutting-edge. No em dashes in site copy — use commas, periods, or colons. Dry humor over enthusiasm. Example of the register: "It's a two. It knows what it did."
 
-## Current state & agreed next step (v2)
+## Current state (v2 — live)
 
-A minimal landing page was designed and approved (see `minimal.html` in the handoff, or ask Trace for it): centered logo at 340px, lowercase `@tracethechicagotaste` in red linking to TikTok, tagline, vertical text links (Instagram, TikTok, Contact), Contact opens a native `<dialog>` with trace@ email + Instagram DM link.
+v2 shipped: minimal landing at `/`, full old site split to `/eat`. `/eat` was then further reduced to a "coming soon" placeholder, and its blog section split out into its own `/blog` page, since Trace wants to think through the recommendation engine more before building it out.
 
-Agreed architecture for v2 (owner confirmed direction, not yet committed):
-- `/` (index.html) → the minimal landing page
-- `/eat` (eat.html) → the current full site (recommendation engine, videos, blog), linked from the landing page
-- Do NOT create separate mobile/desktop sites — owner floated this twice; the agreed approach is the page split above. Everything must stay responsive.
+Do NOT create separate mobile/desktop sites — owner floated this twice; the agreed approach is the page split above. Everything must stay responsive.
 
 ## Open items
 
 1. Instagram URL is unverified — https://www.instagram.com/tracethechicagotaste is a guess. Confirm handle with Trace before shipping.
-2. All restaurant entries in `SPOTS` are placeholders; real data to come (possibly from Trace's Beli ratings — Beli has no public API, manual entry likely).
-3. Video cards link to the TikTok profile generically; swap for real video URLs or TikTok embeds.
-4. Blog posts are placeholder titles.
+2. The recommendation engine (`SPOTS` array, filter chips, restaurant cards) is on hold — Trace wants to think through the design more. Previous full build is in git history if resurrecting it.
+3. Video grid and "work with me" business contact section were dropped when `/eat` became a placeholder — no current home for them; revisit if/when needed.
+4. Blog posts in `blog.html` are placeholder titles.
 5. Verify DKIM/DMARC TXT records made it to Cloudflare (see DNS section).
 6. Gmail send-as for trace@ not yet configured.
 
